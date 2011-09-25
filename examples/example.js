@@ -1,14 +1,10 @@
-/**
- * HTTP auth library.
- */
-var httpAuth = require('../lib/http-auth');
-
-/**
- * Creates private HTTP server.
- */
-httpAuth.createServer('Sharon', 'bus412--', function(request, response) {
-	response.writeHead(200, {
-		'Content-Type' : 'text/html'
-	});
-	response.end("<pre>Hi Sharon, welcome to private HTTP server.</pre>");
+var httpAuth = require('http-auth2');
+httpAuth.createServer(function(username) {
+	// Multiple username/password combinations are supported.
+	if (username == 'user1') return 'password1';
+	if (username == 'user2') return 'password2';
+	return false;
+}, function (request, response) {
+	response.writeHead(200, {'Content-Type': 'text/html'});
+	response.end("<pre>If you can read this, you've authenticated successfully.</pre>");
 }).listen(8000);

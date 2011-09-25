@@ -1,37 +1,40 @@
 # http-auth
-Utility that is creating HTTP server with basic authentication.
+HTTP server with basic authentication.
 
 ## Installation
 
 Via git (or downloaded tarball):
 
-	$ git clone git://github.com/gevorg/http-auth.git
+	$ git clone git://github.com/SDA/http-auth2.git
 
 Via [npm](http://github.com/isaacs/npm):
 
-	$ npm install http-auth
+	$ npm install http-auth2
 
 ## Usage
 	
-	/**
-	 * HTTP Auth library.
-	 */
-	var httpAuth = require('http-auth');
-	
-	/**
-	 * Creates private HTTP server.
-	 */
-	httpAuth.createServer('Sharon', 'bus412--', function(request, response) {
+	var httpAuth = require('http-auth2');
+	httpAuth.createServer(function(username) {
+		// Multiple username/password combinations are supported.
+		if (username == 'user1') return 'password1';
+		if (username == 'user2') return 'password2';
+		return false;
+	}, function (request, response) {
 		response.writeHead(200, {'Content-Type': 'text/html'});
-		response.end("<pre>Hi Sharon, welcome to private server.</pre>");
+		response.end("<pre>If you can read this, you've authenticated successfully.</pre>");
 	}).listen(8000);
 
 Server startup params
 --------------------
 
- - **username** - Username that will be used in basic authentication.
- - **password** - Password that will be used in basic authentication.
- - **callback** - Callback function that will be called after server will start.
+ - **auth** - Authentication callback that accepts a username and returns the password for that user, or false if that user account is invalid.
+ - **callback** - Callback function that will be called after server starts.
+
+Acknowledgments
+--------------
+
+Based on work by Gevorg Harutyunyan:
+https://github.com/gevorg/http-auth
 
 ## License
 

@@ -1,18 +1,18 @@
 {
-	"name": "http-auth",
-	"description": "Utility that is creating HTTP server with basic authentication.",
-	"version": "1.0.0",
-	"author": "Gevorg Harutyunyan",
+	"name": "http-auth2",
+	"description": "HTTP server with basic authentication.",
+	"version": "1.1.0",
+	"author": "Sasa Djolic (Based on work by Gevorg Harutyunyan)",
 	"maintainers": [
 		{
-			"name": "gevorg",
-			"email": "gevorg.ha@gmail.com"
+			"name": "Sasa Djolic",
+			"email": "sasa.djolic@sdaworld.com"
 		}
 	],
-	"homepage": "https://github.com/gevorg/http-auth",
+	"homepage": "https://github.com/SDA/http-auth2",
 	"repository": {
 		"type": "git",
-		"url": "http://github.com/gevorg/http-auth.git"
+		"url": "http://github.com/SDA/http-auth2.git"
 	},
 	"main": "./lib/http-auth.js",
 	"licenses": [
